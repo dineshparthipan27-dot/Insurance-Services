@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Services</title>
+    <link rel="stylesheet" href="Insurance.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-container">
+            <img src="./asset/blue.png" alt="Company Logo" class="logo-img">
+        </a>
+
+
+        <div class="nav-menu" id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="login.html" class="login-btn">Login</a>
+        </div>
+
+
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+
+
+
+    <section id="home" class="hero-section">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="text-reveal">Secure Your Future</span>
+                <span class="text-reveal highlight">with Confidence</span>
+            </h1>
+            <p class="hero-text text-fade">
+                Protecting what matters most. Get comprehensive insurance plans tailored for you and your family's peace
+                of mind.
+            </p>
+
+            <div class="hero-buttons button-fade">
+                <a href="404.html" class="btn primary-btn">
+                    Get a Free Quote <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="404.html" class="btn secondary-btn">
+                    Explore Plans
+                </a>
+            </div>
+
+            <div class="trust-indicators glass-panel fade-up-delay">
+                <span><i class="fa-solid fa-check-circle"></i> 24/7 Support</span>
+                <span class="divider"></span>
+                <span><i class="fa-solid fa-bolt"></i> Fast Claims</span>
+                <span class="divider"></span>
+                <span><i class="fa-solid fa-users"></i> 50k+ Customers</span>
+            </div>
+        </div>
+
+        <div class="hero-image-wrapper image-reveal">
+            <div class="image-backdrop"></div>
+            <img src="./asset/in1.webp" alt="Insurance Premium" class="hero-image">
+            <div class="floating-badge badge-1">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <strong>100%</strong>
+                    <span>Secure</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-container">
+
+            <div class="about-image-column" data-aos="fade-right" data-aos-duration="1000">
+                <div class="about-image-wrapper">
+                    <img src="./asset/in2.webp" alt="About SecureLife Team" class="about-image">
+                    <div class="experience-badge" data-aos="zoom-in" data-aos-delay="400">
+                        <h3>20+</h3>
+                        <p>Years of<br>Excellence</p>
+                    </div>
+                    <div class="about-shape"></div>
+                </div>
+            </div>
+
+            <div class="about-text-column" data-aos="fade-left" data-aos-duration="1000">
+                <h4 class="section-subtitle">WHO WE ARE</h4>
+                <h2 class="section-title">Your Trusted Partner in <span class="highlight">Protection</span></h2>
+                <p class="about-description">
+                    At SecureLife, we believe that peace of mind shouldn't be a luxury. With over two decades of
+                    industry experience, we have been safeguarding families, businesses, and dreams against the
+                    unexpected with transparent and reliable policies.
+                </p>
+
+                <ul class="trust-list">
+                    <li data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-box"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <div class="trust-info">
+                            <h5>99.9% Claim Settlement</h5>
+                            <span>Hassle-free, quick, and transparent process.</span>
+                        </div>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-box"><i class="fa-solid fa-award"></i></div>
+                        <div class="trust-info">
+                            <h5>Award-Winning Support</h5>
+                            <span>Dedicated 24/7 customer assistance.</span>
+                        </div>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon-box"><i class="fa-solid fa-file-shield"></i></div>
+                        <div class="trust-info">
+                            <h5>Tailored Insurance Plans</h5>
+                            <span>Customized policies to fit your specific needs.</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="404.html" class="btn primary-btn about-btn" data-aos="fade-up" data-aos-delay="400">
+                    Discover Our Services <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="services" class="plans-section">
+        <div class="plans-header" data-aos="fade-up">
+            <h4 class="section-subtitle">OUR SERVICES</h4>
+            <h2 class="section-title">Comprehensive <span class="highlight">Insurance Plans</span></h2>
+            <p class="plans-subtitle-text">Choose the perfect coverage tailored to protect every aspect of your life and
+                secure your family's future.</p>
+        </div>
+
+        <div class="plans-grid">
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-wrapper life-bg">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+                        <h3 class="plan-title">Life Insurance</h3>
+                        <p class="front-click-text">Hover to explore <i class="fa-solid fa-arrow-right-rotate"></i></p>
+                    </div>
+                    <div class="flip-card-back life-bg">
+                        <h3>Life Insurance</h3>
+                        <p class="plan-desc">Secure your family's financial future with our flexible, high-coverage life
+                            plans that ensure they are always protected.</p>
+                        <a href="404.html" class="plan-link-back">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-wrapper health-bg">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h3 class="plan-title">Health Insurance</h3>
+                        <p class="front-click-text">Hover to explore <i class="fa-solid fa-arrow-right-rotate"></i></p>
+                    </div>
+                    <div class="flip-card-back health-bg">
+                        <h3>Health Insurance</h3>
+                        <p class="plan-desc">Get access to the best healthcare facilities with cashless treatments and
+                            comprehensive medical emergency coverage.</p>
+                        <a href="404.html" class="plan-link-back">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-wrapper vehicle-bg">
+                            <i class="fa-solid fa-car-shield"></i>
+                        </div>
+                        <h3 class="plan-title">Vehicle Insurance</h3>
+                        <p class="front-click-text">Hover to explore <i class="fa-solid fa-arrow-right-rotate"></i></p>
+                    </div>
+                    <div class="flip-card-back vehicle-bg">
+                        <h3>Vehicle Insurance</h3>
+                        <p class="plan-desc">Drive with confidence. We offer complete protection against accidents,
+                            theft, and third-party liabilities for your vehicles.</p>
+                        <a href="404.html" class="plan-link-back">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-wrapper home-bg">
+                            <i class="fa-solid fa-house-shield"></i>
+                        </div>
+                        <h3 class="plan-title">Home Insurance</h3>
+                        <p class="front-click-text">Hover to explore <i class="fa-solid fa-arrow-right-rotate"></i></p>
+                    </div>
+                    <div class="flip-card-back home-bg">
+                        <h3>Home Insurance</h3>
+                        <p class="plan-desc">Safeguard your biggest asset. Our home insurance protects your property and
+                            belongings against natural disasters and theft.</p>
+                        <a href="404.html" class="plan-link-back">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="why-us" class="why-choose-section">
+        <div class="why-header" data-aos="fade-down">
+            <h4 class="section-subtitle">WHY CHOOSE SECURELIFE</h4>
+            <h2 class="section-title">Experience the <span class="highlight">Difference</span></h2>
+            <p class="why-subtitle-text">We don't just sell policies; we build lifelong trust through transparent
+                processes and unmatched customer service.</p>
+        </div>
+
+        <div class="why-grid">
+
+            <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="why-icon-box">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <h3 class="why-title">24/7 Expert Support</h3>
+                <p class="why-desc">Our dedicated support team is available round-the-clock to answer your queries and
+                    assist you during emergencies.</p>
+            </div>
+
+            <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="why-icon-box">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <h3 class="why-title">Lightning Fast Claims</h3>
+                <p class="why-desc">Experience hassle-free and swift claim settlements with our streamlined digital
+                    verification process.</p>
+            </div>
+
+            <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="why-icon-box">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3 class="why-title">100% Digital Process</h3>
+                <p class="why-desc">From buying a policy to filing a claim, do everything seamlessly from the comfort of
+                    your home using our app.</p>
+            </div>
+
+            <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="why-icon-box">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <h3 class="why-title">Vast Cashless Network</h3>
+                <p class="why-desc">Gain instant access to over 10,000+ top-rated network hospitals and garages across
+                    the entire country.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="how-it-works" class="process-section">
+        <div class="process-header" data-aos="fade-up">
+            <h4 class="section-subtitle">3 SIMPLE STEPS</h4>
+            <h2 class="section-title">How to Get <span class="highlight">Insured</span></h2>
+            <p class="process-subtitle-text">Securing your future with us is quick, easy, and completely hassle-free.
+            </p>
+        </div>
+
+        <div class="process-container">
+
+            <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-hand-pointer"></i>
+                    <span class="step-number">1</span>
+                </div>
+                <h3 class="step-title">Compare & Choose Plan</h3>
+                <p class="step-desc">Browse through our tailored insurance plans and select the one that best fits your
+                    needs and budget.</p>
+            </div>
+
+            <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span class="step-number">2</span>
+                </div>
+                <h3 class="step-title">Fill Details & Apply</h3>
+                <p class="step-desc">Complete a simple online application form with your personal and nominee details.
+                    No paperwork needed.</p>
+            </div>
+
+            <div class="process-step" data-aos="fade-right" data-aos-delay="500">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span class="step-number">3</span>
+                </div>
+                <h3 class="step-title">Pay & Get Insured</h3>
+                <p class="step-desc">Make a secure online payment for your premium and receive your policy document
+                    instantly via email.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="milestones" class="stats-section">
+        <div class="stats-container">
+
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="100">
+                <i class="fa-solid fa-users stat-icon"></i>
+                <div class="stat-number-wrapper">
+                    <span class="counter" data-target="50000">0</span><span class="stat-plus">+</span>
+                </div>
+                <p class="stat-text">Happy Families</p>
+            </div>
+
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="200">
+                <i class="fa-solid fa-handshake-angle stat-icon"></i>
+                <div class="stat-number-wrapper">
+                    <span class="counter" data-target="99">0</span><span class="stat-plus">%</span>
+                </div>
+                <p class="stat-text">Claims Settled</p>
+            </div>
+
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="300">
+                <i class="fa-solid fa-hospital stat-icon"></i>
+                <div class="stat-number-wrapper">
+                    <span class="counter" data-target="10000">0</span><span class="stat-plus">+</span>
+                </div>
+                <p class="stat-text">Network Hospitals</p>
+            </div>
+
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="400">
+                <i class="fa-solid fa-award stat-icon"></i>
+                <div class="stat-number-wrapper">
+                    <span class="counter" data-target="20">0</span><span class="stat-plus">+</span>
+                </div>
+                <p class="stat-text">Years Experience</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="partners" class="partners-section-alt">
+
+
+        <div class="marquee-wrapper" data-aos="zoom-in" data-aos-delay="800">
+            <div class="marquee-track">
+                <div class="marquee-item"><i class="fa-solid fa-square-h"></i> Apollo Care</div>
+                <div class="marquee-item"><i class="fa-solid fa-truck-medical"></i> City Health</div>
+                <div class="marquee-item"><i class="fa-solid fa-car-on"></i> AutoFix Motors</div>
+                <div class="marquee-item"><i class="fa-solid fa-tooth"></i> Smile Dental</div>
+                <div class="marquee-item"><i class="fa-solid fa-heart-circle-check"></i> Prime Care</div>
+                <div class="marquee-item"><i class="fa-solid fa-car-battery"></i> QuickGarage</div>
+
+                <div class="marquee-item"><i class="fa-solid fa-square-h"></i> Apollo Care</div>
+                <div class="marquee-item"><i class="fa-solid fa-truck-medical"></i> City Health</div>
+                <div class="marquee-item"><i class="fa-solid fa-car-on"></i> AutoFix Motors</div>
+                <div class="marquee-item"><i class="fa-solid fa-tooth"></i> Smile Dental</div>
+                <div class="marquee-item"><i class="fa-solid fa-heart-circle-check"></i> Prime Care</div>
+                <div class="marquee-item"><i class="fa-solid fa-car-battery"></i> QuickGarage</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="premium-testi-section">
+        <div class="testi-container">
+
+            <div class="testi-content-left" data-aos="fade-right">
+                <h4 class="section-subtitle">CLIENT STORIES</h4>
+                <h2 class="section-title">Trusted by <br><span class="highlight">Thousands</span></h2>
+                <p class="testi-desc">Discover why families and businesses choose SecureLife for their ultimate
+                    protection. Real stories from real people.</p>
+
+                <div class="rating-summary">
+                    <div class="big-rating">4.9</div>
+                    <div class="rating-details">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <span>Based on 10,000+ Reviews</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-cards-right">
+                <div class="premium-testi-card card-up" data-aos="fade-up" data-aos-delay="200">
+                    <div class="quote-icon-box">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="review-text">"An absolute lifesaver! The cashless claim during my medical emergency was
+                        approved within minutes. The support team is incredibly empathetic and professional."</p>
+                    <div class="client-info">
+                        <img src="./asset/man1.webp" alt="Client 1">
+                        <div>
+                            <h4>Ramesh Kumar</h4>
+                            <p>Health Insurance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="premium-testi-card card-down" data-aos="fade-up" data-aos-delay="400">
+                    <div class="quote-icon-box">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="review-text">"Switching to SecureLife was the best financial decision. Affordable
+                        premiums, no hidden charges, and completely transparent terms. Highly recommended!"</p>
+                    <div class="client-info">
+                        <img src="./asset/woman1.webp" alt="Client 2">
+                        <div>
+                            <h4>Priya Sharma</h4>
+                            <p>Life Insurance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="blog" class="blog-section">
+        <div class="blog-header" data-aos="fade-up">
+            <h4 class="section-subtitle">LATEST INSIGHTS</h4>
+            <h2 class="section-title">Insurance <span class="highlight">Tips & News</span></h2>
+            <p class="blog-subtitle-text">Stay updated with the latest trends, tax saving tips, and smart ways to
+                protect your family's future.</p>
+        </div>
+
+        <div class="blog-grid">
+
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="blog-img-wrapper">
+                    <span class="blog-category">Tax Saving</span>
+                    <img src="./asset/in3.webp" alt="Tax Saving Tips">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="fa-regular fa-calendar-days"></i> Sep 2, 2026</span>
+                        <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+                    </div>
+                    <h3 class="blog-title">How to Maximize Your Tax Benefits Under Section 80D</h3>
+                    <p class="blog-excerpt">Discover legal and smart ways to save on your income tax using health
+                        insurance policies for you and your parents.</p>
+                    <a href="404.html" class="read-more-btn">Read Article <i
+                            class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="blog-img-wrapper">
+                    <span class="blog-category">Health Tips</span>
+                    <img src="./asset/in4.webp" alt="Health Insurance Guide">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="fa-regular fa-calendar-days"></i> Aug 28, 2026</span>
+                        <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+                    </div>
+                    <h3 class="blog-title">5 Things to Check Before Buying Family Health Insurance</h3>
+                    <p class="blog-excerpt">Don't buy a policy blindly. Learn the crucial factors like room rent
+                        capping, co-payment, and waiting periods.</p>
+                    <a href="404.html" class="read-more-btn">Read Article <i
+                            class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="blog-img-wrapper">
+                    <span class="blog-category">Auto Insurance</span>
+                    <img src="./asset/in5.webp" alt="Car Insurance Claims">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="fa-regular fa-calendar-days"></i> Aug 15, 2026</span>
+                        <span><i class="fa-regular fa-clock"></i> 3 min read</span>
+                    </div>
+                    <h3 class="blog-title">A Step-by-Step Guide to Cashless Car Insurance Claims</h3>
+                    <p class="blog-excerpt">Got into an accident? Here is everything you need to know to get your car
+                        repaired without paying from your pocket.</p>
+                    <a href="404.html" class="read-more-btn">Read Article <i
+                            class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="mobile-app" class="app-section">
+        <div class="app-container">
+
+            <div class="app-content-left" data-aos="fade-right">
+                <h4 class="section-subtitle">DIGITAL CONVENIENCE</h4>
+                <h2 class="section-title">Manage Your Policies <br><span class="highlight">On the Go</span></h2>
+                <p class="app-desc">Download the SecureLife mobile app today. File claims instantly, download policy
+                    documents, track renewals, and consult experts 24/7 right from your smartphone.</p>
+
+                <ul class="app-features-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Instant digital claim intimation & tracking</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Access policy documents anytime, anywhere</li>
+                    <li><i class="fa-solid fa-circle-check"></i> One-click premium renewals & reminders</li>
+                </ul>
+
+                <div class="app-store-buttons">
+                    <a href="404.html" class="store-btn">
+                        <i class="fa-brands fa-google-play"></i>
+                        <div>
+                            <span>Get it on</span>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                    <a href="404.html" class="store-btn">
+                        <i class="fa-brands fa-app-store-ios"></i>
+                        <div>
+                            <span>Download on the</span>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="app-image-right" data-aos="fade-left">
+                <div class="app-mockup-bg"></div>
+                <img src="./asset/in6.webp" alt="SecureLife Mobile App" class="app-mockup-img">
+            </div>
+
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="faq-header" data-aos="fade-up">
+            <h4 class="section-subtitle">HAVE QUESTIONS?</h4>
+            <h2 class="section-title">Frequently Asked <span class="highlight">Questions</span></h2>
+            <p class="faq-subtitle-text">Find quick answers to common queries about our insurance policies, claims, and
+                services.</p>
+        </div>
+
+        <div class="faq-container">
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                <button class="faq-question">
+                    <span>How do I file a cashless claim?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        You can easily file a cashless claim by visiting any of our 5000+ network hospitals. Simply
+                        present your SecureLife health card at the insurance desk, and we will directly settle the bills
+                        with the hospital.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <button class="faq-question">
+                    <span>Are pre-existing diseases covered?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Yes, pre-existing diseases are covered after a standard waiting period of 2 to 4 years,
+                        depending on the specific health insurance plan you choose during enrollment.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <button class="faq-question">
+                    <span>Can I cancel my policy and get a refund?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Absolutely! We offer a 15-day "Free Look Period" from the date of policy receipt. If you are not
+                        satisfied, you can cancel the policy within this period and get a full refund minus minor
+                        administrative charges.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                <button class="faq-question">
+                    <span>Is there a grace period if I miss my premium due date?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Yes, we provide a grace period of 30 days for yearly premium payments and 15 days for monthly
+                        payments. Your coverage remains active during this grace period.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer-section">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <a href="index.html" class="logo-container">
+                    <img src="./asset/blue.png" alt="Company Logo" class="logo-img">
+                </a>
+                <p class="footer-desc">Your trusted partner in financial security and comprehensive insurance coverage.
+                    Protecting dreams since 2006.</p>
+                <div class="social-links">
+                    <a href="404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home </a></li>
+                    <li><a href="about.html"><i class="fa-solid fa-angle-right"></i> About</a></li>
+                    <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+                    <li><a href="blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+                    <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact </a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Insurance Plans</h4>
+                <ul>
+                    <li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Life Insurance</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Health Coverage</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Vehicle Insurance</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Property & Home</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Travel Insurance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe to our newsletter to get the latest updates and tax saving tips.</p>
+
+
+                <form id="footerNewsletterForm" novalidate style="position: relative; margin-bottom: 15px;">
+                    <div class="newsletter-form">
+                        <input type="email" id="footerEmailInput" placeholder="Your Email Address" required>
+                        <button type="submit" id="footerSubscribeBtn"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+
+                    <span id="footerEmailError" class="newsletter-error-msg"></span>
+                </form>
+
+
+                <div id="footerSuccessMsg" class="newsletter-success-msg" style="display: none;">
+                    <i class="fa-solid fa-circle-check"></i> Subscribed Successfully!
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 SecureLife Insurance Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100;
+        const statsSection = document.querySelector('.stats-section');
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateCounters();
+                    observer.disconnect();
+                }
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
+        }
+
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

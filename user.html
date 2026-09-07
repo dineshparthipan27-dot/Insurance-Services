@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SecureLife | Customer Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+
+            --primary-blue: #1E3A8A;
+            --primary-blue-light: rgba(30, 58, 138, 0.08);
+            --primary-teal: #0D9488;
+            --primary-teal-light: rgba(13, 148, 136, 0.1);
+            --accent-gold: #F59E0B;
+            --accent-gold-light: rgba(245, 158, 11, 0.1);
+
+            --bg-light: #f8fafc;
+            --panel-bg: #ffffff;
+            --border-line: #e2e8f0;
+
+            --text-dark: #1F2937;
+            --text-muted: #64748b;
+
+            --success: #10b981;
+            --success-light: rgba(16, 185, 129, 0.15);
+            --danger: #ef4444;
+            --danger-light: rgba(239, 68, 68, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+
+        .sidebar {
+            width: 280px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.4s ease;
+            z-index: 1000;
+            position: fixed;
+            height: 100vh;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
+            border-right: 1px solid var(--border-line);
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            z-index: 999;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        .sidebar-header {
+            padding: 30px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-line);
+        }
+
+        .logo-da {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-da i {
+            color: var(--accent-gold);
+            font-size: 28px;
+        }
+
+        .close-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 25px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 30px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+        }
+
+        .menu-link i {
+            font-size: 18px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .menu-link:hover {
+            background-color: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .menu-link.active {
+            background-color: var(--primary-teal-light);
+            color: var(--primary-teal);
+            border-left: 4px solid var(--primary-teal);
+        }
+
+        .sidebar-bottom {
+            padding: 20px 0 30px 0;
+            border-top: 1px solid var(--border-line);
+        }
+
+        .logout-btn {
+            color: var(--danger);
+        }
+
+        .logout-btn:hover {
+            background-color: var(--danger-light);
+        }
+
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            min-height: 100vh;
+            width: calc(100% - 280px);
+        }
+
+        .top-header {
+            background: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-line);
+            position: sticky;
+            top: 0;
+            z-index: 998;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--primary-teal-light);
+            color: var(--primary-teal);
+            border: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .greeting h1 {
+            font-size: 22px;
+            color: var(--primary-blue);
+            font-weight: 900;
+        }
+
+        .welcome-name {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: right;
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: var(--primary-teal);
+            font-weight: 800;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .user-email {
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 700;
+            display: block;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-blue);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+
+        .view-section {
+            display: none;
+            padding: 40px;
+            flex-direction: column;
+            gap: 30px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .view-section.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-card,
+        .content-box {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid var(--border-line);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .stat-card {
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary-teal);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(13, 148, 136, 0.1);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .stat-details h3 {
+            font-size: 26px;
+            color: var(--primary-blue);
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .stat-details p {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .content-box {
+            padding: 35px;
+            width: 100%;
+            overflow-x: scroll;
+        }
+
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-line);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+
+        .premium-banner {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 30px rgba(30, 58, 138, 0.2);
+        }
+
+        .banner-text h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .banner-text p {
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+
+        .banner-btn {
+            background: var(--accent-gold);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .banner-btn:hover {
+            background: #d97706;
+            transform: translateY(-3px);
+        }
+
+
+        .action-btn {
+            background: #ffffff;
+            color: var(--primary-teal);
+            border: 1px solid var(--primary-teal);
+            padding: 8px 15px;
+            font-size: 13px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-teal);
+            color: #fff;
+        }
+
+        .badge {
+            padding: 6px 15px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .badge-active {
+            background: var(--success-light);
+            color: var(--success);
+        }
+
+        .badge-pending {
+            background: var(--accent-gold-light);
+            color: var(--accent-gold);
+        }
+
+        .badge-rejected {
+            background: var(--danger-light);
+            color: var(--danger);
+        }
+
+        .badge-blue {
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+        }
+
+
+        .track-timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--border-line);
+            margin-top: 20px;
+        }
+
+        .track-step {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .track-step::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--border-line);
+            border: 3px solid #fff;
+        }
+
+        .track-step.completed::before {
+            background: var(--success);
+        }
+
+        .track-step.active::before {
+            background: var(--primary-teal);
+            box-shadow: 0 0 0 4px var(--primary-teal-light);
+        }
+
+        .track-step h4 {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .track-step p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-line);
+            font-size: 14px;
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        td {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .menu-toggle,
+            .close-btn {
+                display: block;
+            }
+
+            .two-col-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .premium-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-header {
+                padding: 15px 20px;
+            }
+
+            .view-section {
+                padding: 20px;
+            }
+
+            .user-info {
+                display: none;
+            }
+
+
+            .stat-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .error-border {
+            border-color: var(--danger) !important;
+            background: var(--danger-light) !important;
+        }
+
+        .shake {
+            animation: searchShake 0.4s ease-in-out;
+        }
+
+        @keyframes searchShake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25%,
+            75% {
+                transform: translateX(-6px);
+            }
+
+            50% {
+                transform: translateX(6px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="logo-da"><i class="fa-solid fa-shield-halved"></i> SecureLife</div>
+                    <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li><a class="menu-link active" data-target="overview-view"><i
+                                class="fa-solid fa-house-chimney"></i> My Overview</a></li>
+                    <li><a class="menu-link" data-target="policies-view"><i class="fa-solid fa-file-shield"></i> My
+                            Policies</a></li>
+                    <li><a class="menu-link" data-target="claims-view"><i class="fa-solid fa-file-medical"></i> Track
+                            Claims</a></li>
+                    <li><a class="menu-link" data-target="network-view"><i class="fa-solid fa-map-location-dot"></i>
+                            Network Hospitals</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-bottom">
+                <a href="login.html" class="menu-link logout-btn"><i class="fa-solid fa-right-from-bracket"></i>
+                    Logout</a>
+            </div>
+        </aside>
+
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="openSidebar"><i class="fa-solid fa-bars-staggered"></i></button>
+                    <div class="greeting">
+                        <h1 id="page-title">Welcome Back <span class="welcome-name">| Customer</span></h1>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-role">Policy Holder</span>
+
+                            <span class="user-email" id="logged-in-email">user@securelife.com</span>
+                        </div>
+                        <div class="user-avatar"><i class="fa-regular fa-user"></i></div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ==========================================
+                 1. OVERVIEW VIEW 
+                 ========================================== -->
+            <div id="overview-view" class="view-section active">
+
+
+                <div class="premium-banner">
+                    <div class="banner-text">
+                        <h2>Premium Due Reminder</h2>
+                        <p>Your Family Health Plan premium of $850 is due in 12 days. Pay early to avoid late fees.</p>
+                    </div>
+                    <a href="404.html" class="banner-btn">Pay Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: var(--primary-teal-light); color: var(--primary-teal);"><i
+                                class="fa-solid fa-umbrella"></i></div>
+                        <div class="stat-details">
+                            <h3>$1.5M</h3>
+                            <p>Total Life Cover</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: var(--primary-blue-light); color: var(--primary-blue);"><i
+                                class="fa-solid fa-file-contract"></i></div>
+                        <div class="stat-details">
+                            <h3>03</h3>
+                            <p>Active Policies</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--accent-gold-light); color: var(--accent-gold);">
+                            <i class="fa-solid fa-receipt"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>$2,450</h3>
+                            <p>Annual Premium Paid</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="two-col-grid">
+                    <section class="content-box">
+                        <h2 class="section-title"><i class="fa-solid fa-bell"></i> Recent Activity</h2>
+                        <div class="track-timeline">
+                            <div class="track-step completed">
+                                <h4>Premium Payment Successful</h4>
+                                <p>Term Life Policy (#POL-A101) - $1,200 Paid. (Oct 15, 2023)</p>
+                            </div>
+                            <div class="track-step completed">
+                                <h4>Claim Settled</h4>
+                                <p>Dental Claim (#CLM-892) for $450 transferred to bank. (Sep 02, 2023)</p>
+                            </div>
+                            <div class="track-step completed">
+                                <h4>Policy Documents Issued</h4>
+                                <p>Family Health Cover documents emailed to you. (Aug 10, 2023)</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-box">
+                        <h2 class="section-title"><i class="fa-solid fa-chart-pie"></i> Coverage Breakdown</h2>
+                        <div
+                            style="position: relative; height: 280px; width: 100%; display: flex; justify-content: center;">
+                            <canvas id="coverageChart"></canvas>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 2. MY POLICIES VIEW 
+                 ========================================== -->
+            <div id="policies-view" class="view-section">
+                <section class="content-box">
+                    <h2 class="section-title"><i class="fa-solid fa-folder-open"></i> My Active Policies</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Policy ID</th>
+                                    <th>Plan Name</th>
+                                    <th>Sum Assured</th>
+                                    <th>Next Renewal</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#POL-A101</td>
+                                    <td>Elite Term Life</td>
+                                    <td>$1,000,000</td>
+                                    <td>15 Oct, 2024</td>
+                                    <td><span class="badge badge-active">Active</span></td>
+                                    <td><a href="404.html" class="action-btn"><i class="fa-solid fa-download"></i>
+                                            Doc</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#POL-B402</td>
+                                    <td>Family Health Cover</td>
+                                    <td>$500,000</td>
+                                    <td><span style="color:var(--danger)">12 Nov, 2023</span></td>
+                                    <td><span class="badge badge-pending">Due Soon</span></td>
+                                    <td><a href="404.html" class="action-btn"
+                                            style="background:var(--danger); color:#fff; border:none;">Pay Now</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#POL-D990</td>
+                                    <td>Comprehensive Motor (SUV)</td>
+                                    <td>$45,000</td>
+                                    <td>05 Mar, 2024</td>
+                                    <td><span class="badge badge-active">Active</span></td>
+                                    <td><a href="404.html" class="action-btn"><i class="fa-solid fa-download"></i>
+                                            Doc</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="content-box">
+                    <h2 class="section-title"><i class="fa-solid fa-briefcase-medical"></i> Add-ons & Benefits</h2>
+                    <div class="two-col-grid">
+                        <div style="border:1px solid var(--border-line); padding:20px; border-radius:10px;">
+                            <h4 style="color:var(--primary-blue); margin-bottom:10px;"><i class="fa-solid fa-tooth"></i>
+                                Dental & Vision Cover</h4>
+                            <p style="font-size:13px; color:var(--text-muted); margin-bottom:15px;">Attached to your
+                                Family Health Plan. Available limit: $1,200.</p>
+                            <span class="badge badge-blue">Active Rider</span>
+                        </div>
+                        <div style="border:1px solid var(--border-line); padding:20px; border-radius:10px;">
+                            <h4 style="color:var(--primary-blue); margin-bottom:10px;"><i
+                                    class="fa-solid fa-car-burst"></i> Zero Depreciation</h4>
+                            <p style="font-size:13px; color:var(--text-muted); margin-bottom:15px;">Attached to Motor
+                                Policy. Covers 100% of parts replacement cost.</p>
+                            <span class="badge badge-blue">Active Rider</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ==========================================
+                 3. CLAIM TRACKER VIEW 
+                 ========================================== -->
+            <div id="claims-view" class="view-section">
+                <section class="stats-grid">
+                    <div class="stat-card" style="cursor: pointer; border-color: var(--primary-teal);">
+                        <div class="stat-icon" style="background: var(--primary-blue); color: #fff;"><i
+                                class="fa-solid fa-plus"></i></div>
+                        <a href="404.html" class="stat-details">
+                            <h3 style="font-size: 20px;">File New Claim</h3>
+                            <p>Cashless or Reimbursement</p>
+                        </a>
+                    </div>
+                </section>
+
+                <div class="two-col-grid">
+                    <section class="content-box">
+                        <h2 class="section-title"><i class="fa-solid fa-location-crosshairs"></i> Live Claim Status:
+                            #CLM-9092</h2>
+                        <div class="track-timeline">
+                            <div class="track-step completed">
+                                <h4>Claim Initiated</h4>
+                                <p>You successfully submitted the hospital bills and reports. (Nov 01, 10:00 AM)</p>
+                            </div>
+                            <div class="track-step completed">
+                                <h4>Document Verification</h4>
+                                <p>Our team verified all uploaded documents. (Nov 01, 02:30 PM)</p>
+                            </div>
+                            <div class="track-step active">
+                                <h4>Medical Officer Review</h4>
+                                <p>Pending approval from our internal medical board. Usually takes 2-4 hours.</p>
+                            </div>
+                            <div class="track-step">
+                                <h4>Final Approval & Transfer</h4>
+                                <p>Amount will be disbursed to the hospital or your bank account.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-box">
+                        <h2 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Claim History</h2>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>02 Sep, 2023</td>
+                                        <td>Dental</td>
+                                        <td>$450</td>
+                                        <td><span class="badge badge-active">Settled</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>15 Apr, 2022</td>
+                                        <td>Motor</td>
+                                        <td>$1,200</td>
+                                        <td><span class="badge badge-active">Settled</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 4. NETWORK HOSPITALS (MAP) VIEW 
+                 ========================================== -->
+            <div id="network-view" class="view-section">
+                <section class="content-box">
+                    <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Locate Nearby Cashless
+                        Hospitals</h2>
+                    <p style="color:var(--text-muted); font-size:14px; margin-bottom: 20px;">Search for network
+                        hospitals in your city to avail instant cashless treatments.</p>
+
+
+                    <div style="position: relative; margin-bottom: 35px;">
+                        <div style="display:flex; gap:15px;">
+                            <input type="text" id="hospitalSearchInput"
+                                placeholder="Enter City or Pincode (e.g. New York, 10001)"
+                                style="flex:1; padding:12px 20px; border:1px solid var(--border-line); border-radius:10px; font-family:inherit; outline:none; transition: all 0.3s;">
+                            <button id="hospitalSearchBtn" class="action-btn"
+                                style="background:var(--primary-blue); color:white; border:none; padding:12px 25px; transition: all 0.3s;">
+                                <i class="fa-solid fa-magnifying-glass"></i> Search
+                            </button>
+                        </div>
+                        <span id="searchErrorMsg"
+                            style="position: absolute; bottom: -20px; left: 5px; font-size: 12px; color: var(--danger); font-weight: 700; display: none;"></span>
+                    </div>
+
+                    <div class="two-col-grid">
+
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.161609877049!2d78.17140487386634!3d11.682956588526372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babefef7fd970bb%3A0xe11aef1a71994f9!2sStackly!5e0!3m2!1sen!2sin!4v1781692635052!5m2!1sen!2sin%22
+                        width=" 100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" class="cm-iframe dark-mode-map">
+                            </iframe>
+                        </div>
+
+
+                        <div
+                            style="border:1px solid var(--border-line); border-radius:12px; padding:20px; height: 350px; overflow-y: auto;">
+                            <div
+                                style="padding-bottom:15px; border-bottom:1px solid var(--border-line); margin-bottom:15px;">
+                                <h4 style="color:var(--primary-blue); margin-bottom:5px;">Apollo Multi-Specialty</h4>
+                                <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;"><i
+                                        class="fa-solid fa-location-dot"></i> 5th Ave, Downtown NY (2.5 Miles)</p>
+                                <span class="badge badge-active">Cashless Available</span>
+                                <a href="404.html"
+                                    style="font-size:12px; color:var(--primary-teal); font-weight:700; float:right; text-decoration:none;">Get
+                                    Directions</a>
+                            </div>
+
+                            <div
+                                style="padding-bottom:15px; border-bottom:1px solid var(--border-line); margin-bottom:15px;">
+                                <h4 style="color:var(--primary-blue); margin-bottom:5px;">City Care Hospital</h4>
+                                <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;"><i
+                                        class="fa-solid fa-location-dot"></i> Queens Boulevard (5.1 Miles)</p>
+                                <span class="badge badge-active">Cashless Available</span>
+                                <a href="404.html"
+                                    style="font-size:12px; color:var(--primary-teal); font-weight:700; float:right; text-decoration:none;">Get
+                                    Directions</a>
+                            </div>
+
+                            <div>
+                                <h4 style="color:var(--primary-blue); margin-bottom:5px;">Global Vision Eye Center</h4>
+                                <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;"><i
+                                        class="fa-solid fa-location-dot"></i> Brooklyn NY (6.0 Miles)</p>
+                                <span class="badge badge-pending">Reimbursement Only</span>
+                                <a href="404.html"
+                                    style="font-size:12px; color:var(--primary-teal); font-weight:700; float:right; text-decoration:none;">Get
+                                    Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+
+            const storedUserEmail = sessionStorage.getItem("userLoggedInEmail");
+            const displayEmailElem = document.getElementById("logged-in-email");
+            if (storedUserEmail) {
+                displayEmailElem.textContent = storedUserEmail;
+            } else {
+                displayEmailElem.textContent = "customer@securelife.com"; // Default UI fallback
+            }
+
+
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const openSidebarBtn = document.getElementById('openSidebar');
+            const closeSidebarBtn = document.getElementById('closeSidebar');
+
+            function openSidebar() { sidebar.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+            function closeSidebar() { sidebar.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = 'auto'; }
+
+            openSidebarBtn.addEventListener('click', openSidebar);
+            closeSidebarBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+
+
+            const menuLinks = document.querySelectorAll('.sidebar-menu .menu-link');
+            const views = document.querySelectorAll('.view-section');
+            const pageTitle = document.getElementById('page-title');
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    if (this.classList.contains('logout-btn')) return;
+                    e.preventDefault();
+
+                    if (this.classList.contains('active')) return;
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+
+                    views.forEach(v => v.classList.remove('active'));
+                    const targetId = this.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+
+                    let titleText = this.innerText.trim();
+                    pageTitle.innerHTML = `${titleText} <span class="welcome-name">| Customer</span>`;
+
+                    if (window.innerWidth <= 1024) closeSidebar();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+
+            const ctxPie = document.getElementById('coverageChart').getContext('2d');
+            new Chart(ctxPie, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Term Life', 'Health Cover', 'Motor Insurance'],
+                    datasets: [{
+                        data: [65, 25, 10],
+                        backgroundColor: ['#1E3A8A', '#0D9488', '#F59E0B'],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { font: { family: "'Plus Jakarta Sans', sans-serif", weight: '600' } } }
+                    },
+                    cutout: '75%'
+                }
+            });
+
+        });
+
+
+
+        const searchInput = document.getElementById('hospitalSearchInput');
+        const searchBtn = document.getElementById('hospitalSearchBtn');
+        const searchErrorMsg = document.getElementById('searchErrorMsg');
+
+        if (searchBtn && searchInput) {
+            searchBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const query = searchInput.value.trim();
+
+
+                if (query === "") {
+                    showSearchError("Please enter a City or Pincode to search.");
+                } else if (query.length < 3) {
+                    showSearchError("Please enter at least 3 characters.");
+                } else {
+
+                    clearSearchError();
+
+
+                    const originalText = searchBtn.innerHTML;
+                    searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Searching...';
+                    searchBtn.disabled = true;
+                    searchBtn.style.opacity = "0.8";
+
+
+                    setTimeout(() => {
+                        searchBtn.innerHTML = originalText;
+                        searchBtn.disabled = false;
+                        searchBtn.style.opacity = "1";
+
+
+
+                    }, 1200);
+                }
+            });
+
+
+            searchInput.addEventListener('input', clearSearchError);
+
+            function showSearchError(msg) {
+                searchInput.classList.add('error-border');
+
+
+                searchInput.classList.remove('shake');
+                void searchInput.offsetWidth;
+                searchInput.classList.add('shake');
+
+                searchErrorMsg.textContent = msg;
+                searchErrorMsg.style.display = 'block';
+            }
+
+            function clearSearchError() {
+                searchInput.classList.remove('error-border', 'shake');
+                searchErrorMsg.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

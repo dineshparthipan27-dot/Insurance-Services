@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureLife | Premium Login</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="auth-split-container">
+
+
+        <div class="auth-banner">
+
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1920&auto=format&fit=crop"
+                alt="Family Protection" class="banner-bg">
+            <div class="banner-overlay"></div>
+
+            <div class="banner-content">
+                <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+                <div class="pulse-badge">
+                    <span class="dot"></span> Secure Connection
+                </div>
+
+                <div class="banner-text">
+                    <h1>Protect What<br><span class="text-gold">Matters Most.</span></h1>
+                    <p>Access your personalized dashboard to manage policies, track health claims instantly, and explore
+                        wealth growth strategies.</p>
+                </div>
+
+                <div class="glass-stats-wrapper">
+                    <div class="glass-stat-card delay-1">
+                        <i class="fa-solid fa-shield-heart icon-teal"></i>
+                        <div>
+                            <h4>50k+</h4>
+                            <span>Active Policies</span>
+                        </div>
+                    </div>
+                    <div class="glass-stat-card delay-2">
+                        <i class="fa-solid fa-headset icon-gold"></i>
+                        <div>
+                            <h4>24/7</h4>
+                            <span>Claim Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="auth-form-area">
+            <div class="form-container">
+
+                <div class="form-header">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-shield-halved logo-icon"></i> SecureLife
+                    </a>
+                    <p class="auth-subtitle">Enter your credentials to access your portal.</p>
+                </div>
+
+
+                <div class="pill-tabs">
+                    <div class="pill-slider" id="pillSlider"></div>
+                    <button class="pill-btn active" id="btnShowLogin">Login</button>
+                    <button class="pill-btn" id="btnShowSignup">Register</button>
+                </div>
+
+
+                <form id="loginForm" class="auth-form active-form" novalidate>
+                    <div class="input-group">
+                        <i class="fa-solid fa-user-shield group-icon"></i>
+                        <select id="loginRole" required>
+                            <option value="" disabled selected></option>
+                            <option value="admin">System Admin</option>
+                            <option value="user">Customer </option>
+                        </select>
+                        <label>Portal Access Role</label>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-envelope group-icon"></i>
+                        <input type="email" id="loginEmail" placeholder=" " required autocomplete="off">
+                        <label>Email Address</label>
+                        <span class="error-msg" id="loginEmailError"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock group-icon"></i>
+                        <input type="password" id="loginPassword" placeholder=" " required>
+                        <label>Secure Password</label>
+                        <i class="fa-solid fa-eye toggle-pwd"></i>
+                        <span class="error-msg" id="loginPasswordError"></span>
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="remember-checkbox">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="404.html" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Secure Login <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    </button>
+                </form>
+
+
+                <form id="signupForm" class="auth-form" novalidate>
+                    <div class="input-group">
+                        <i class="fa-solid fa-user group-icon"></i>
+                        <input type="text" id="signupName" placeholder=" " required autocomplete="off">
+                        <label>Full Name</label>
+                        <span class="error-msg" id="signupNameError"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-envelope group-icon"></i>
+                        <input type="email" id="signupEmail" placeholder=" " required autocomplete="off">
+                        <label>Email Address</label>
+                        <span class="error-msg" id="signupEmailError"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock group-icon"></i>
+                        <input type="password" id="signupPassword" placeholder=" " required>
+                        <label>Create Password</label>
+                        <i class="fa-solid fa-eye toggle-pwd"></i>
+                        <span class="error-msg" id="signupPasswordError"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock group-icon"></i>
+                        <input type="password" id="signupConfirm" placeholder=" " required>
+                        <label>Confirm Password</label>
+                        <i class="fa-solid fa-eye toggle-pwd"></i>
+                        <span class="error-msg" id="signupConfirmError"></span>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Create Account <i class="fa-solid fa-user-plus"></i>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="login.js"></script>
+</body>
+
+</html>
