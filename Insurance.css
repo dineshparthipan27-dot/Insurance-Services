@@ -9,6 +9,13 @@
      overflow-x: hidden;
  }
 
+ :root {
+     --primary: #1E3A8A;
+     --secondary: #0D9488;
+     --accent: #F59E0B;
+     --bg-color: #F8FAFC;
+ }
+
 
  .navbar {
      display: flex;

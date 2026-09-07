@@ -621,6 +621,29 @@
         a{
     text-decoration: none;
 }
+
+  .logo-img {
+            width: 150px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .logo-da {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-da i {
+            font-size: 28px;
+        }
+
     </style>
 </head>
 
@@ -633,7 +656,9 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-top">
                 <div class="sidebar-header">
-                    <div class="logo-da"><i class="fa-solid fa-shield-halved"></i> SecureLife</div>
+                   <div class="logo-da">
+                    <img src="./asset/blue.webp" alt="Company Logo" class="logo-img">
+                </div>
                     <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
                 </div>
 
@@ -1072,6 +1097,7 @@
                     searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Searching...';
                     searchBtn.disabled = true;
                     searchBtn.style.opacity = "0.8";
+                    window.location.href = '404.html'
 
 
                     setTimeout(() => {
