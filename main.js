@@ -2,24 +2,29 @@ const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-menu");
 const navLinks = document.querySelectorAll(".nav-link");
 
-
 hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
+    
+   
+    document.body.classList.toggle("no-scroll");
 });
-
 
 navLinks.forEach(link => {
     link.addEventListener("click", function () {
-
+        
+        
         navLinks.forEach(n => n.classList.remove("active"));
-
-
+        
+       
         this.classList.add("active");
 
-
+        
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
+        
+       
+        document.body.classList.remove("no-scroll");
     });
 });
 
